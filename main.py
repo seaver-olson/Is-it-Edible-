@@ -10,10 +10,7 @@ def user_input():
     stalk_shape = input('What is the stalk shape? enlarging=e,tapering=t')
     description = {'cap-color': cap_color, 'cap-shape': cap_shape, 'odor': odor, 'gill-color': gill_color, 'gill-size': gill_size, 'stalk-shape': stalk_shape}
     return description
-#q:UnboundLocalError: cannot access local variable 'df' where it is not associated with a value
-#Q: how to fix the error abovE?
-#A: make df a global variable
-
+    
 def shrink(description):
     '''
     shrinks down possible rows
