@@ -1,7 +1,12 @@
 import pandas as pd
+import os
 
 
 def user_input():
+    print('Please answer the following questions with the following answers:')
+    print('if you do not know the answer to a question, type idk')
+    input('Press enter to continue')
+    os.system('cls')
     cap_color = input('What is the cap color? brown=n,buff=b,cinnamon=c,gray=g,green=r,pink=p,purple=u,red=e,white=w,yellow=y')
     cap_shape = input('What is the cap shape? bell=b,conical=c,convex=x,flat=f, knobbed=k,sunken=s')
     odor = input('What is the odor? almond=a,anise=l,creosote=c,fishy=y,foul=f,musty=m,none=n,pungent=p,spicy=s')
@@ -10,14 +15,18 @@ def user_input():
     stalk_shape = input('What is the stalk shape? enlarging=e,tapering=t')
     description = {'cap-color': cap_color, 'cap-shape': cap_shape, 'odor': odor, 'gill-color': gill_color, 'gill-size': gill_size, 'stalk-shape': stalk_shape}
     return description
-    
+
 def shrink(description):
     '''
     shrinks down possible rows
     '''
     df = pd.read_csv('mushrooms.csv')
     for key in description:
-        df = df[df[key] == description[key]]
+        if description[key] == 'idk':
+            continue
+        else:
+            print(key, description[key])
+            df = df[df[key] == description[key]]
     return df
 
 def isPoisonous(df):
